@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55B4A7128A317A6FB74F0D7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4A15C1AEDB6CCED6AC774 /* Constants.swift */; };
+		698225922A7AAFA20019B697 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 698225912A7AAFA20019B697 /* SnapKit */; };
+		69AD90C1292BEE890098A66D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C0292BEE890098A66D /* AppDelegate.swift */; };
+		69AD90C3292BEE890098A66D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C2292BEE890098A66D /* SceneDelegate.swift */; };
+		69AD90C5292BEE890098A66D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C4292BEE890098A66D /* GameViewController.swift */; };
+		69AD90CA292BEE8A0098A66D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69AD90C9292BEE8A0098A66D /* Assets.xcassets */; };
+		69AD90CD292BEE8A0098A66D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69AD90CB292BEE8A0098A66D /* LaunchScreen.storyboard */; };
+		748F4F3031657935DE73A27B /* Pods_SwiftMoonLander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994C44855D0E9A533CCCF62B /* Pods_SwiftMoonLander.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		55B4A15C1AEDB6CCED6AC774 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		69AD90BD292BEE890098A66D /* SwiftMoonLander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMoonLander.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69AD90C0292BEE890098A66D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		69AD90C2292BEE890098A66D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		69AD90C4292BEE890098A66D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		69AD90C9292BEE8A0098A66D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69AD90CC292BEE8A0098A66D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69AD90CE292BEE8A0098A66D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AFBF20C49E3AABF6A189DD7 /* Pods-SwiftMoonLander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMoonLander.release.xcconfig"; path = "Target Support Files/Pods-SwiftMoonLander/Pods-SwiftMoonLander.release.xcconfig"; sourceTree = "<group>"; };
+		994C44855D0E9A533CCCF62B /* Pods_SwiftMoonLander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftMoonLander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77C5E78F4EA2D995DE4DC01 /* Pods-SwiftMoonLander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMoonLander.debug.xcconfig"; path = "Target Support Files/Pods-SwiftMoonLander/Pods-SwiftMoonLander.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		69AD90BA292BEE890098A66D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				698225922A7AAFA20019B697 /* SnapKit in Frameworks */,
+				748F4F3031657935DE73A27B /* Pods_SwiftMoonLander.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F41DCC2CBE0121F0725F7FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				994C44855D0E9A533CCCF62B /* Pods_SwiftMoonLander.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B1E67FE6E758CCB84011832 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E77C5E78F4EA2D995DE4DC01 /* Pods-SwiftMoonLander.debug.xcconfig */,
+				6AFBF20C49E3AABF6A189DD7 /* Pods-SwiftMoonLander.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		69AD90B4292BEE890098A66D = {
+			isa = PBXGroup;
+			children = (
+				69AD90BF292BEE890098A66D /* SwiftMoonLander */,
+				69AD90BE292BEE890098A66D /* Products */,
+				3B1E67FE6E758CCB84011832 /* Pods */,
+				1F41DCC2CBE0121F0725F7FF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		69AD90BE292BEE890098A66D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69AD90BD292BEE890098A66D /* SwiftMoonLander.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69AD90BF292BEE890098A66D /* SwiftMoonLander */ = {
+			isa = PBXGroup;
+			children = (
+				69AD90C0292BEE890098A66D /* AppDelegate.swift */,
+				69AD90C2292BEE890098A66D /* SceneDelegate.swift */,
+				69AD90C4292BEE890098A66D /* GameViewController.swift */,
+				69AD90C9292BEE8A0098A66D /* Assets.xcassets */,
+				69AD90CB292BEE8A0098A66D /* LaunchScreen.storyboard */,
+				69AD90CE292BEE8A0098A66D /* Info.plist */,
+				55B4A15C1AEDB6CCED6AC774 /* Constants.swift */,
+			);
+			path = SwiftMoonLander;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69AD90BC292BEE890098A66D /* SwiftMoonLander */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69AD90D1292BEE8A0098A66D /* Build configuration list for PBXNativeTarget "SwiftMoonLander" */;
+			buildPhases = (
+				8A1280375515797D615EE794 /* [CP] Check Pods Manifest.lock */,
+				69AD90B9292BEE890098A66D /* Sources */,
+				69AD90BA292BEE890098A66D /* Frameworks */,
+				69AD90BB292BEE890098A66D /* Resources */,
+				1AA70CE9C6DAAA997010EF0A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftMoonLander;
+			packageProductDependencies = (
+				698225912A7AAFA20019B697 /* SnapKit */,
+			);
+			productName = SwiftMoonLander;
+			productReference = 69AD90BD292BEE890098A66D /* SwiftMoonLander.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69AD90B5292BEE890098A66D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					69AD90BC292BEE890098A66D = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 69AD90B8292BEE890098A66D /* Build configuration list for PBXProject "SwiftMoonLander" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 69AD90B4292BEE890098A66D;
+			packageReferences = (
+				698225902A7AAFA20019B697 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = 69AD90BE292BEE890098A66D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69AD90BC292BEE890098A66D /* SwiftMoonLander */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		69AD90BB292BEE890098A66D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AD90CD292BEE8A0098A66D /* LaunchScreen.storyboard in Resources */,
+				69AD90CA292BEE8A0098A66D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AA70CE9C6DAAA997010EF0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftMoonLander/Pods-SwiftMoonLander-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftMoonLander/Pods-SwiftMoonLander-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftMoonLander/Pods-SwiftMoonLander-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A1280375515797D615EE794 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftMoonLander-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		69AD90B9292BEE890098A66D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AD90C5292BEE890098A66D /* GameViewController.swift in Sources */,
+				69AD90C1292BEE890098A66D /* AppDelegate.swift in Sources */,
+				69AD90C3292BEE890098A66D /* SceneDelegate.swift in Sources */,
+				55B4A7128A317A6FB74F0D7B /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		69AD90CB292BEE8A0098A66D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69AD90CC292BEE8A0098A66D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		69AD90CF292BEE8A0098A66D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		69AD90D0292BEE8A0098A66D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69AD90D2292BEE8A0098A66D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E77C5E78F4EA2D995DE4DC01 /* Pods-SwiftMoonLander.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftMoonLander/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danijel.SwiftMoonLander;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69AD90D3292BEE8A0098A66D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AFBF20C49E3AABF6A189DD7 /* Pods-SwiftMoonLander.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftMoonLander/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danijel.SwiftMoonLander;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69AD90B8292BEE890098A66D /* Build configuration list for PBXProject "SwiftMoonLander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69AD90CF292BEE8A0098A66D /* Debug */,
+				69AD90D0292BEE8A0098A66D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69AD90D1292BEE8A0098A66D /* Build configuration list for PBXNativeTarget "SwiftMoonLander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69AD90D2292BEE8A0098A66D /* Debug */,
+				69AD90D3292BEE8A0098A66D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		698225902A7AAFA20019B697 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		698225912A7AAFA20019B697 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 698225902A7AAFA20019B697 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 69AD90B5292BEE890098A66D /* Project object */;
+}
