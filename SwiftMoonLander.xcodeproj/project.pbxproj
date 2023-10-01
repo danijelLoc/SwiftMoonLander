@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		55B4A7128A317A6FB74F0D7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4A15C1AEDB6CCED6AC774 /* Constants.swift */; };
+		69526FA62ACA20AF006C1643 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69526FA52ACA20AF006C1643 /* Extensions.swift */; };
+		69526FA82ACA26A5006C1643 /* GameViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69526FA72ACA26A5006C1643 /* GameViewController+Interface.swift */; };
 		698225922A7AAFA20019B697 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 698225912A7AAFA20019B697 /* SnapKit */; };
 		69AD90C1292BEE890098A66D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C0292BEE890098A66D /* AppDelegate.swift */; };
 		69AD90C3292BEE890098A66D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C2292BEE890098A66D /* SceneDelegate.swift */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		55B4A15C1AEDB6CCED6AC774 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		69526FA52ACA20AF006C1643 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		69526FA72ACA26A5006C1643 /* GameViewController+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Interface.swift"; sourceTree = "<group>"; };
 		69AD90BD292BEE890098A66D /* SwiftMoonLander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMoonLander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69AD90C0292BEE890098A66D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69AD90C2292BEE890098A66D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,10 +89,12 @@
 				69AD90C0292BEE890098A66D /* AppDelegate.swift */,
 				69AD90C2292BEE890098A66D /* SceneDelegate.swift */,
 				69AD90C4292BEE890098A66D /* GameViewController.swift */,
+				69526FA72ACA26A5006C1643 /* GameViewController+Interface.swift */,
+				55B4A15C1AEDB6CCED6AC774 /* Constants.swift */,
+				69526FA52ACA20AF006C1643 /* Extensions.swift */,
 				69AD90C9292BEE8A0098A66D /* Assets.xcassets */,
 				69AD90CB292BEE8A0098A66D /* LaunchScreen.storyboard */,
 				69AD90CE292BEE8A0098A66D /* Info.plist */,
-				55B4A15C1AEDB6CCED6AC774 /* Constants.swift */,
 			);
 			path = SwiftMoonLander;
 			sourceTree = "<group>";
@@ -213,7 +219,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69526FA62ACA20AF006C1643 /* Extensions.swift in Sources */,
 				69AD90C5292BEE890098A66D /* GameViewController.swift in Sources */,
+				69526FA82ACA26A5006C1643 /* GameViewController+Interface.swift in Sources */,
 				69AD90C1292BEE890098A66D /* AppDelegate.swift in Sources */,
 				69AD90C3292BEE890098A66D /* SceneDelegate.swift in Sources */,
 				55B4A7128A317A6FB74F0D7B /* Constants.swift in Sources */,
