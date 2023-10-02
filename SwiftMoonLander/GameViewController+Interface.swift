@@ -17,13 +17,14 @@ extension GameViewController {
     func setupMoonLanderInterface() {
         view.addSubview(moonLander)
         moonLander.tintColor = .init(red: 1, green: 0.7, blue: 0, alpha: 1)
+        moonLander.bounds = .init(x: 0.0, y: 0.0, width: CGFloat(moonLanderWidth), height: CGFloat(moonLanderHeight))
     }
     
     func setupDirectionalControlsInterface() {
-        ([leftArrow, rightArrow] as [UIImageView]).enumerated().forEach { (index, arrow) in
+        ([leftArrow, rightArrow] as [UIButton]).enumerated().forEach { (index, arrow) in
             view.addSubview(arrow)
             arrow.tintColor = .white
-            arrow.isUserInteractionEnabled = true
+            arrow.contentMode = .scaleAspectFill
             arrow.snp.makeConstraints { make in
                 make.width.height.equalTo(70)
                 if index == 0 {
@@ -34,12 +35,15 @@ extension GameViewController {
                 make.bottom.equalToSuperview().offset(-64)
             }
         }
+        leftArrow.setBackgroundImage(UIImage(systemName: "arrowtriangle.left.circle.fill"), for: .normal)
+        rightArrow.setBackgroundImage(UIImage(systemName: "arrowtriangle.right.circle.fill"), for: .normal)
     }
     
     func setupEngineThrustControlInterface() {
         view.addSubview(engineThrustArrow)
         engineThrustArrow.tintColor = .white
-        engineThrustArrow.isUserInteractionEnabled = true
+        engineThrustArrow.contentMode = .scaleAspectFill
+        engineThrustArrow.setBackgroundImage(UIImage(systemName: "flame.circle.fill"), for: .normal)
         
         engineThrustArrow.snp.makeConstraints { make in
             make.width.height.equalTo(70)
@@ -61,6 +65,4 @@ extension GameViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
     }
-    
-
 }

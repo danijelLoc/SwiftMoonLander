@@ -1,28 +1,16 @@
-//
-//  ViewController.swift
-//  SwiftMoonLander
-//
-//  Created by Danijel on 21.11.2022..
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
 import RxRelay
 
-enum RotationControlDirection: Int {
-    case left = 1
-    case straight = 0
-    case right = -1
-}
 
 class GameViewController: UIViewController {
     let moonLander = UIImageView(image: UIImage(systemName: "rectangle.roundedtop.fill"))
     let moonSurface = UIView()
-    let leftArrow = UIImageView(image: UIImage(systemName: "arrowtriangle.left.circle.fill"))
-    let rightArrow = UIImageView(image: UIImage(systemName: "arrowtriangle.right.circle.fill"))
-    let engineThrustArrow = UIImageView(image: UIImage(systemName: "flame.circle.fill"))
+    let leftArrow = UIButton()
+    let rightArrow = UIButton()
+    let engineThrustArrow = UIButton()
 
     let frameRateLabel = UILabel()
     let moonLanderAngleLabel = UILabel()
@@ -64,7 +52,6 @@ class GameViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        moonLander.bounds = .init(x: 0.0, y: 0.0, width: CGFloat(moonLanderWidth), height: CGFloat(moonLanderHeight))
         lastFrameTime = .now
         startGameLoop()
     }
@@ -81,7 +68,11 @@ class GameViewController: UIViewController {
         setNewMoonLanderAngle(direction: moonLanderControlRotationDirection.value)
         setNewMoonLanderAcceleration()
         
-        let newVelocity = moonLanderVelocity.value + moonLanderAcceleration.value * deltaT.value
+        var newVelocity = moonLanderVelocity.value + moonLanderAcceleration.value * deltaT.value
+        // Simple ground friction instant horizontal halt
+        // TODO: Friction force, dynamic μ - the coefficient of friction, due to heat between materials etc...
+        newVelocity.x = moonLanderTouchdownStatus.value ? 0 : newVelocity.x
+
         let deltaPath = moonLanderVelocity.value * deltaT.value + 0.5 * moonLanderAcceleration.value * pow(deltaT.value, 2)
         let newPosition = moonLanderPosition.value + SIMD2(x: deltaPath.x, y: -deltaPath.y) * meterToPointFactor // Cartesian coordinate system to screen points
         moonLanderVelocity.accept(newVelocity)
@@ -90,12 +81,11 @@ class GameViewController: UIViewController {
     }
 
     private func setNewMoonLanderAcceleration() {
-        // TODO: Find better way to do this
-        let thrustDirection: SIMD2<Float> = .init(x: cos(moonLanderAngle.value), y: sin(moonLanderAngle.value)) // TODO: NORMALISED VECTOR!
+        let thrustDirection: SIMD2<Float> = .init(x: cos(moonLanderAngle.value), y: sin(moonLanderAngle.value)).normalised()
         let thrustForce: SIMD2<Float> = moonLanderMaxThrust * moonLanderThrusterFiredStatus.value.toFloat * thrustDirection
         let gravitationalForce: SIMD2<Float> = moonLanderMass * moonGravitationalAcceleration
-        let groundReactionForce: SIMD2<Float> = .init(x: 0, y: -min((thrustForce + gravitationalForce).y, 0)) * moonLanderTouchdownStatus.value.toFloat
-        let resultingForce: SIMD2<Float> = gravitationalForce + thrustForce + groundReactionForce
+        let groundVerticalReactionForce: SIMD2<Float> = .init(x: 0, y: -min((thrustForce + gravitationalForce).y, 0)) * moonLanderTouchdownStatus.value.toFloat
+        let resultingForce: SIMD2<Float> = gravitationalForce + thrustForce + groundVerticalReactionForce
         let resultingAcceleration = resultingForce / moonLanderMass
         moonLanderAcceleration.accept(resultingAcceleration)
     }
@@ -138,15 +128,16 @@ class GameViewController: UIViewController {
         [(leftArrow, RotationControlDirection.left), (rightArrow, RotationControlDirection.right)]
             .forEach { (arrow, direction) in
                 arrow.rx.longPressGesture().when(.began).subscribe(onNext: { _ in
-                            self.moonLanderControlRotationDirection.accept(direction)
+                    self.moonLanderControlRotationDirection.accept(direction)
+                    arrow.tintColor = .gray
                 }).disposed(by: disposeBag)
                 arrow.rx.longPressGesture().when(.ended).subscribe(onNext: { _ in
-                            self.moonLanderControlRotationDirection.accept(.straight)
+                    self.moonLanderControlRotationDirection.accept(.straight)
+                    arrow.tintColor = .white
                 }).disposed(by: disposeBag)
             }
         [(leftArrow, RotationControlDirection.left), (rightArrow, RotationControlDirection.right)]
             .forEach {(arrow, direction) in
-                // TODO: Prevent rotation after touchdown
                 arrow.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
                     self.setNewMoonLanderAngle(direction: direction)
                 }).disposed(by: disposeBag)
@@ -164,10 +155,12 @@ class GameViewController: UIViewController {
         
         engineThrustArrow.rx.longPressGesture().when(.began).subscribe(onNext: { _ in
             self.moonLanderThrusterFiredStatus.accept(true)
+            self.engineThrustArrow.tintColor = .gray
         }).disposed(by: disposeBag)
         
         engineThrustArrow.rx.longPressGesture().when(.ended).subscribe(onNext: { _ in
             self.moonLanderThrusterFiredStatus.accept(false)
+            self.engineThrustArrow.tintColor = .white
         }).disposed(by: disposeBag)
     }
     
@@ -188,3 +181,8 @@ class GameViewController: UIViewController {
     }
 }
 
+enum RotationControlDirection: Int {
+    case left = 1
+    case straight = 0
+    case right = -1
+}

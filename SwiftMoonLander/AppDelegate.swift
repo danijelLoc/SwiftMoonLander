@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  SwiftMoonLander
-//
-//  Created by Danijel on 21.11.2022..
-//
-
 import UIKit
 
 @main

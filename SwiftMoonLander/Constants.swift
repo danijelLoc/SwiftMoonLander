@@ -1,7 +1,3 @@
-//
-// Created by Danijel on 22.11.2022..
-//
-
 import Foundation
 
 public let meterToPointFactor: Float = 10.0 // one meter is 10 points
