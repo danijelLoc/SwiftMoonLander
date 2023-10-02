@@ -18,6 +18,15 @@ extension GameViewController {
         view.addSubview(moonLander)
         moonLander.tintColor = .init(red: 1, green: 0.7, blue: 0, alpha: 1)
         moonLander.bounds = .init(x: 0.0, y: 0.0, width: CGFloat(moonLanderWidth), height: CGFloat(moonLanderHeight))
+        
+        moonLander.addSubview(moonLanderThrust)
+        moonLanderThrust.tintColor = .cyan
+        moonLanderThrust.transform = CGAffineTransformMakeRotation(Float.pi.toCGFloat) // looks better
+        moonLanderThrust.bounds = .init(x: 0.0, y: 0.0, width: CGFloat(moonLanderWidth/4.5), height: CGFloat(moonLanderHeight/2.5))
+        moonLanderThrust.snp.makeConstraints { make in
+            make.top.equalTo(moonLander.snp.bottom).offset(-10)
+            make.centerX.equalTo(moonLander.snp.centerX)
+        }
     }
     
     func setupDirectionalControlsInterface() {

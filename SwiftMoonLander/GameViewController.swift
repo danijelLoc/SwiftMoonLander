@@ -7,6 +7,8 @@ import RxRelay
 
 class GameViewController: UIViewController {
     let moonLander = UIImageView(image: UIImage(systemName: "rectangle.roundedtop.fill"))
+    let moonLanderThrust = UIImageView(image: UIImage(systemName: "drop.fill"))
+
     let moonSurface = UIView()
     let leftArrow = UIButton()
     let rightArrow = UIButton()
@@ -19,19 +21,17 @@ class GameViewController: UIViewController {
     let infoStackView = UIStackView()
 
     private var moonLanderAngle = BehaviorRelay<Float>(value: Float.pi / 2) // in radians
-    private var moonLanderAcceleration = BehaviorRelay<SIMD2<Float>>(
-        value: moonGravitationalAcceleration) // in m/s**2
-    private var moonLanderVelocity = BehaviorRelay<SIMD2<Float>>(
-            value: .init(x: 0, y: 0)) // in m/s
+    private var moonLanderAcceleration = BehaviorRelay<SIMD2<Float>>(value: moonGravitationalAcceleration) // in m/s**2
+    private var moonLanderVelocity = BehaviorRelay<SIMD2<Float>>(value: .init(x: 0, y: 0)) // in m/s
     private var moonLanderPosition = BehaviorRelay<SIMD2<Float>>(value: .init(x: 200, y: 200))
     
-    private var lastFrameTime: Date = .distantPast
-    private var deltaT = BehaviorRelay<Float>(value: 0.0) // in seconds
-    private let disposeBag = DisposeBag()
-
     private var moonLanderTouchdownStatus = BehaviorRelay<Bool>(value: false)
     private var moonLanderThrusterFiredStatus = BehaviorRelay<Bool>(value: false)
     private var moonLanderControlRotationDirection = BehaviorRelay<RotationControlDirection>(value: .straight)
+    
+    private var deltaT = BehaviorRelay<Float>(value: 0.0) // in seconds
+    private var lastFrameTime: Date = .distantPast
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,10 +69,6 @@ class GameViewController: UIViewController {
         setNewMoonLanderAcceleration()
         
         var newVelocity = moonLanderVelocity.value + moonLanderAcceleration.value * deltaT.value
-        // Simple ground friction instant horizontal halt
-        // TODO: Friction force, dynamic μ - the coefficient of friction, due to heat between materials etc...
-        newVelocity.x = moonLanderTouchdownStatus.value ? 0 : newVelocity.x
-
         let deltaPath = moonLanderVelocity.value * deltaT.value + 0.5 * moonLanderAcceleration.value * pow(deltaT.value, 2)
         let newPosition = moonLanderPosition.value + SIMD2(x: deltaPath.x, y: -deltaPath.y) * meterToPointFactor // Cartesian coordinate system to screen points
         moonLanderVelocity.accept(newVelocity)
@@ -94,8 +90,9 @@ class GameViewController: UIViewController {
         moonLanderAngle.subscribe(onNext: {angle in
             // Transform from cartesian coordinate system to UI. 0 degrees is at (0, 1) instead of (1,0)
             let uiAngle: Float = (angle - Float.pi / 2)
-            // Silly function rotates clockwise instead of anti clockwise
+            // CGAffineTransformMakeRotation rotates clockwise instead of anti clockwise
             self.moonLander.transform = CGAffineTransformMakeRotation(-uiAngle.toCGFloat)
+            
             let angleInDegrees = angle / Float.pi * 180
             self.moonLanderAngleLabel.text = String(format: "Angle: %.2f°", angleInDegrees)
         }).disposed(by: disposeBag)
@@ -106,8 +103,10 @@ class GameViewController: UIViewController {
 
             // Collision detection with moon surface TODO: Improve :::::::
             if moonLanderBottomY >= self.view.frame.height - moonSurfaceElevationHeight.toCGFloat {
-                // touchdown
-                self.moonLanderVelocity.accept(.init(x: self.moonLanderVelocity.value.x, y: max(self.moonLanderVelocity.value.y, 0)))
+                // Touchdown
+                // Simple ground friction instant horizontal halt
+                // TODO: Friction force, dynamic μ - the coefficient of friction, due to heat between materials etc...
+                self.moonLanderVelocity.accept(.init(x: 0, y: max(self.moonLanderVelocity.value.y, 0)))
                 self.moonLanderTouchdownStatus.accept(true)
             } else if self.moonLanderTouchdownStatus.value == true {
                 self.moonLanderTouchdownStatus.accept(false)
@@ -145,22 +144,18 @@ class GameViewController: UIViewController {
     }
 
     private func subscribeEngineToEngineThrustControls() {
-        engineThrustArrow.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
-            self.moonLanderThrusterFiredStatus.accept(true)
-        }).disposed(by: disposeBag)
-        
-        engineThrustArrow.rx.tapGesture().when(.ended).subscribe(onNext: { _ in
-            self.moonLanderThrusterFiredStatus.accept(false)
-        }).disposed(by: disposeBag)
-        
         engineThrustArrow.rx.longPressGesture().when(.began).subscribe(onNext: { _ in
             self.moonLanderThrusterFiredStatus.accept(true)
-            self.engineThrustArrow.tintColor = .gray
+            self.engineThrustArrow.tintColor = .red
         }).disposed(by: disposeBag)
         
         engineThrustArrow.rx.longPressGesture().when(.ended).subscribe(onNext: { _ in
             self.moonLanderThrusterFiredStatus.accept(false)
             self.engineThrustArrow.tintColor = .white
+        }).disposed(by: disposeBag)
+        
+        moonLanderThrusterFiredStatus.subscribe(onNext: {status in
+            self.moonLanderThrust.isHidden = !status
         }).disposed(by: disposeBag)
     }
     
