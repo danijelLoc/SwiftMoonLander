@@ -1,5 +1,5 @@
 # SwiftMoonLander
 
-Reactive programming game demo created with RxSwift and UIKit.
+Reactive programming demo with simple game created with RxSwift and UIKit.
 
-![Alt text](./Screenshots/screenshot_0.png?raw=true "Screenshot")
+<img src="./Screenshots/screenshot_0.png?raw=true" alt="Screenshot" width="200"/>
