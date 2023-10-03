@@ -11,6 +11,7 @@
 		69526FA62ACA20AF006C1643 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69526FA52ACA20AF006C1643 /* Extensions.swift */; };
 		69526FA82ACA26A5006C1643 /* GameViewController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69526FA72ACA26A5006C1643 /* GameViewController+Interface.swift */; };
 		698225922A7AAFA20019B697 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 698225912A7AAFA20019B697 /* SnapKit */; };
+		69A12C762ACC6A270076EA90 /* rocket_sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 69A12C752ACC6A270076EA90 /* rocket_sound.m4a */; };
 		69AD90C1292BEE890098A66D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C0292BEE890098A66D /* AppDelegate.swift */; };
 		69AD90C3292BEE890098A66D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C2292BEE890098A66D /* SceneDelegate.swift */; };
 		69AD90C5292BEE890098A66D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD90C4292BEE890098A66D /* GameViewController.swift */; };
@@ -23,6 +24,7 @@
 		55B4A15C1AEDB6CCED6AC774 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		69526FA52ACA20AF006C1643 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		69526FA72ACA26A5006C1643 /* GameViewController+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Interface.swift"; sourceTree = "<group>"; };
+		69A12C752ACC6A270076EA90 /* rocket_sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = rocket_sound.m4a; sourceTree = "<group>"; };
 		69AD90BD292BEE890098A66D /* SwiftMoonLander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMoonLander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69AD90C0292BEE890098A66D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69AD90C2292BEE890098A66D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		69A12C742ACC6A130076EA90 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				69A12C752ACC6A270076EA90 /* rocket_sound.m4a */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		69AD90B4292BEE890098A66D = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		69AD90BF292BEE890098A66D /* SwiftMoonLander */ = {
 			isa = PBXGroup;
 			children = (
+				69A12C742ACC6A130076EA90 /* Sounds */,
 				69AD90C0292BEE890098A66D /* AppDelegate.swift */,
 				69AD90C2292BEE890098A66D /* SceneDelegate.swift */,
 				69AD90C4292BEE890098A66D /* GameViewController.swift */,
@@ -131,6 +142,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
@@ -166,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69AD90CD292BEE8A0098A66D /* LaunchScreen.storyboard in Resources */,
+				69A12C762ACC6A270076EA90 /* rocket_sound.m4a in Resources */,
 				69AD90CA292BEE8A0098A66D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
