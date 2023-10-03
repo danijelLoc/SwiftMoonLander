@@ -41,23 +41,13 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMoonLanderInterface()
+        setupGameInterface()
+        
         subscribeMoonLanderToItsAngleAndPosition()
-        subscribePositionToFailedTouchdown()
-        
-        setupMoonSurfaceInterface()
-        
-        setupDirectionalControlsInterface()
-        subscribeMoonLanderToDirectionalControls(moonLanderControlRotationDirection: moonLanderControlRotationDirection, disposeBag: disposeBag, onTap: setNewMoonLanderAngle)
-        
-        setupEngineThrustControlInterface()
-        subscribeEngineToEngineThrustControls(moonLanderThrusterFiredStatus: moonLanderThrusterFiredStatus, disposeBag: disposeBag)
+        subscribeMoonLanderToControls()
         
         setupLanderThrustAudioPlayer()
-        subscribeAudioPlayers(moonLanderThrusterFiredStatus: moonLanderThrusterFiredStatus.asObservable(), touchDownNotification: touchDownNotification.asObservable(), disposeBag: disposeBag)
-        
-        setupInfoLabelsInterface()
-        subscribeInfoLabelsToGameInformation(moonLanderAcceleration: moonLanderAcceleration.asObservable(), moonLanderVelocity: moonLanderVelocity.asObservable(), deltaT: deltaT.asObservable(), touchDownNotification: touchDownNotification.asObservable(), disposeBag: disposeBag)
+        subscribeInformationLabelsAndAudioPlayersToGameState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -138,6 +128,7 @@ class GameViewController: UIViewController {
     }
     
     private func subscribeMoonLanderToItsAngleAndPosition() {
+        subscribePositionToFailedTouchdown()
         moonLanderAngle.subscribe(onNext: {angle in
             // Transform from cartesian coordinate system to UI. 0 degrees is at (0, 1) instead of (1,0)
             let uiAngle: Float = (angle - Float.pi / 2)
@@ -161,17 +152,14 @@ class GameViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
-    private func subscribePositionToTouchDownNotification() {
-        touchDownNotification.subscribe(onNext: { landedSafely in
-            if landedSafely {
-                self.landingStatusLabel.text = "Landed Safely"
-                self.landingStatusLabel.textColor = .green
-            } else {
-                self.landingStatusLabel.text = "CRASHED, Try Again"
-                self.landingStatusLabel.textColor = .red
-                self.moonLanderPosition.accept(.init(x: 200, y: 200)) // Reset position to try again
-            }
-        }).disposed(by: disposeBag)
+    private func subscribeMoonLanderToControls() {
+        subscribeMoonLanderToDirectionalControls(moonLanderControlRotationDirection: moonLanderControlRotationDirection, disposeBag: disposeBag, onTap: setNewMoonLanderAngle)
+        subscribeEngineToEngineThrustControls(moonLanderThrusterFiredStatus: moonLanderThrusterFiredStatus, disposeBag: disposeBag)
+    }
+    
+    private func subscribeInformationLabelsAndAudioPlayersToGameState() {
+        subscribeAudioPlayers(moonLanderThrusterFiredStatus: moonLanderThrusterFiredStatus.asObservable(), touchDownNotification: touchDownNotification.asObservable(), disposeBag: disposeBag)
+        subscribeInfoLabelsToGameInformation(moonLanderAcceleration: moonLanderAcceleration.asObservable(), moonLanderVelocity: moonLanderVelocity.asObservable(), deltaT: deltaT.asObservable(), touchDownNotification: touchDownNotification.asObservable(), disposeBag: disposeBag)
     }
 }
 

@@ -5,6 +5,14 @@ import RxCocoa
 
 extension GameViewController {
     
+    func setupGameInterface() {
+        setupMoonLanderInterface()
+        setupMoonSurfaceInterface()
+        setupDirectionalControlsInterface()
+        setupEngineThrustControlInterface()
+        setupInfoLabelsInterface()
+    }
+    
     func setupMoonSurfaceInterface() {
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0.2, alpha: 1)
         

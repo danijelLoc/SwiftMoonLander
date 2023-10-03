@@ -4,6 +4,7 @@ import RxCocoa
 import RxGesture
 
 extension GameViewController {
+    
     func subscribeEngineToEngineThrustControls(moonLanderThrusterFiredStatus: BehaviorRelay<Bool>, disposeBag: DisposeBag) {
         engineThrustArrow.rx.longPressGesture().when(.began).subscribe(onNext: { _ in
             moonLanderThrusterFiredStatus.accept(true)
