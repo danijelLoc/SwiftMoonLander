@@ -3,11 +3,14 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import RxRelay
+import AVFoundation
+import AVFAudio
 
 
 class GameViewController: UIViewController {
     let moonLander = UIImageView(image: UIImage(systemName: "rectangle.roundedtop.fill"))
     let moonLanderThrust = UIImageView(image: UIImage(systemName: "drop.fill"))
+    var moonLanderThrustAudioPlayer: AVAudioPlayer?
 
     let moonSurface = UIView()
     let leftArrow = UIButton()
@@ -35,16 +38,19 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMoonSurfaceInterface()
-        
         setupMoonLanderInterface()
         subscribeMoonLanderToItsAngleAndPosition()
+        
+        setupMoonSurfaceInterface()
         
         setupDirectionalControlsInterface()
         subscribeMoonLanderToDirectionalControls()
         
         setupEngineThrustControlInterface()
         subscribeEngineToEngineThrustControls()
+        
+        setupThrustAudioPlayer()
+        subscribeAudioPlayerToThrustStatus()
         
         setupInfoLabelsInterface()
         subscribeInfoLabelsToGameInformation()
@@ -68,9 +74,10 @@ class GameViewController: UIViewController {
         setNewMoonLanderAngle(direction: moonLanderControlRotationDirection.value)
         setNewMoonLanderAcceleration()
         
-        var newVelocity = moonLanderVelocity.value + moonLanderAcceleration.value * deltaT.value
+        let newVelocity = moonLanderVelocity.value + moonLanderAcceleration.value * deltaT.value
         let deltaPath = moonLanderVelocity.value * deltaT.value + 0.5 * moonLanderAcceleration.value * pow(deltaT.value, 2)
-        let newPosition = moonLanderPosition.value + SIMD2(x: deltaPath.x, y: -deltaPath.y) * meterToPointFactor // Cartesian coordinate system to screen points
+        // Cartesian coordinate system to screen points
+        let newPosition = moonLanderPosition.value + SIMD2(x: deltaPath.x, y: -deltaPath.y) * meterToPointFactor
         moonLanderVelocity.accept(newVelocity)
         moonLanderPosition.accept(newPosition)
         lastFrameTime = currentTime
@@ -156,6 +163,23 @@ class GameViewController: UIViewController {
         
         moonLanderThrusterFiredStatus.subscribe(onNext: {status in
             self.moonLanderThrust.isHidden = !status
+        }).disposed(by: disposeBag)
+    }
+    
+    private func setupThrustAudioPlayer() {
+        guard let url = Bundle.main.url(forResource: "rocket_sound", withExtension: ".m4a") else { return }
+        self.moonLanderThrustAudioPlayer = try? AVAudioPlayer(contentsOf: url)
+        self.moonLanderThrustAudioPlayer?.numberOfLoops = -1
+    }
+    
+    private func subscribeAudioPlayerToThrustStatus() {
+        moonLanderThrusterFiredStatus.subscribe(onNext: { isFired in
+            self.moonLanderThrust.isHidden = !isFired
+            if isFired {
+                self.moonLanderThrustAudioPlayer?.play()
+            } else {
+                self.moonLanderThrustAudioPlayer?.stop()
+            }
         }).disposed(by: disposeBag)
     }
     
