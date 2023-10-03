@@ -1,5 +1,7 @@
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 extension GameViewController {
     
@@ -64,7 +66,7 @@ extension GameViewController {
     func setupInfoLabelsInterface() {
         view.addSubview(infoStackView)
         infoStackView.axis = .vertical
-        [frameRateLabel, moonLanderAngleLabel, moonLanderVelocityLabel, moonLanderAccelerationLabel].forEach { label in
+        [frameRateLabel, moonLanderAngleLabel, moonLanderVelocityLabel, moonLanderAccelerationLabel, landingStatusLabel].forEach { label in
             infoStackView.addArrangedSubview(label)
             label.textColor = .white
             label.font = .systemFont(ofSize: 14)
@@ -73,5 +75,31 @@ extension GameViewController {
             make.leading.equalToSuperview().offset(8)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
+    }
+    
+    func subscribeInfoLabelsToGameInformation(moonLanderAcceleration: Observable<SIMD2<Float>>, moonLanderVelocity: Observable<SIMD2<Float>>, deltaT: Observable<Float>, touchDownNotification: Observable<Bool>, disposeBag: DisposeBag) {
+        deltaT.subscribe { (delta: Float) in
+            self.frameRateLabel.text = String(format: "FPS: %.2f", 1 / delta)
+        }.disposed(by: disposeBag)
+        
+        moonLanderVelocity.subscribe { (velocity: SIMD2<Float>) in
+            self.moonLanderVelocityLabel.text = String(format: "Velocity x: %.2f y: %.2f m/s", velocity.x, velocity.y)
+        }.disposed(by: disposeBag)
+        
+        moonLanderAcceleration.subscribe { (acceleration: SIMD2<Float>) in
+            self.moonLanderAccelerationLabel.text = String(
+                format: "Acceleration x: %.2f y: %.2f m/s**2", acceleration.x, acceleration.y
+            )
+        }.disposed(by: disposeBag)
+        
+        touchDownNotification.subscribe(onNext: { landedSafely in
+            if landedSafely {
+                self.landingStatusLabel.text = "Landed Safely"
+                self.landingStatusLabel.textColor = .green
+            } else {
+                self.landingStatusLabel.text = "CRASHED, Try Again"
+                self.landingStatusLabel.textColor = .red
+            }
+        }).disposed(by: disposeBag)
     }
 }

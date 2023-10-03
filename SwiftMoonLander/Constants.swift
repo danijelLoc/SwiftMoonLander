@@ -12,3 +12,5 @@ public let moonLanderMass: Float = 5103.0 // in kg (launch mass) // TODO: Add fu
 public let moonLanderMaxThrust: Float = 16000.0 // in N
 public let moonLanderRotationPerSecond: Float = (120.0 / 180) * Float.pi // in radians
 public let moonSurfaceElevationHeight: Float = 200.0 // in points, used for UI
+
+public let maxMoonLandingVelocity: SIMD2<Float> = .init(x: 1, y: 3)
